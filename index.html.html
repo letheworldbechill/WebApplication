@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manipulative Taktiken erkennen</title>
+    /* Allgemeine Stile */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    background-color: #f7faff;
+    color: #000;
+}
+
+/* Header */
+header {
+    background-color: #4682b4;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 1.5em;
+}
+
+/* Footer */
+footer {
+    background-color: #ccc;
+    text-align: center;
+    padding: 10px;
+    font-size: 0.9em;
+    color: #333;
+}
+
+/* Hauptinhalt */
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Sektionen */
+.section-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    max-width: 800px;
+}
+
+/* Unbewusste Reaktionen */
+#unwissend {
+    background-color: #ffcccc;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Bewusste Reaktionen */
+#wissend {
+    background-color: #ccffcc;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Buttons */
+.button-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 10px;
+}
+
+button {
+    padding: 15px;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Texte */
+.reaction-text {
+    margin-top: 20px;
+    padding: 20px;
+    font-size: 1em;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    max-width: 100%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    min-height: 100px; /* Gleich groß für beide Sektionen */
+}
+</style>
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <header>
+        <h1>Reaktionen auf Manipulation: Unbewusst vs. Bewusst</h1>
+    </header>
+    <main>
+        <div class="section-container">
+            <!-- Unbewusste Reaktionen -->
+            <section id="unwissend">
+                <h2>Unbewusste Reaktionen</h2>
+                <div class="button-container">
+                    <button onclick="showUnwissend(0)">Verunsicherung</button>
+                    <button onclick="showUnwissend(1)">Empathie und Schuldgefühle</button>
+                    <button onclick="showUnwissend(2)">Kompromissbereitschaft</button>
+                    <button onclick="showUnwissend(3)">Unbewusste Anpassung</button>
+                    <button onclick="showUnwissend(4)">Erhöhte Leistungsbereitschaft</button>
+                    <button onclick="showUnwissend(5)">Frustration und Ärger</button>
+                    <button onclick="showUnwissend(6)">Vermeidung oder Rückzug</button>
+                    <button onclick="showUnwissend(7)">Verstärkte Analyse</button>
+                    <button onclick="showUnwissend(8)">Ignorieren der Warnsignale</button>
+                    <button onclick="showUnwissend(9)">Fehlende Gegenwehr</button>
+                </div>
+                <div id="unwissend-text" class="reaction-text"></div>
+            </section>
+
+            <!-- Bewusste Reaktionen -->
+            <section id="wissend">
+                <h2>Bewusste Reaktionen</h2>
+                <div class="button-container">
+                    <button onclick="showWissend(0)">Innere Ruhe bewahren</button>
+                    <button onclick="showWissend(1)">Nicht rechtfertigen</button>
+                    <button onclick="showWissend(2)">Klare Grenzen setzen</button>
+                    <button onclick="showWissend(3)">Grauer Fels</button>
+                    <button onclick="showWissend(4)">Angriffe ignorieren</button>
+                    <button onclick="showWissend(5)">Distanzieren</button>
+                    <button onclick="showWissend(6)">Faktenorientiert bleiben</button>
+                    <button onclick="showWissend(7)">Keine Erwartungen setzen</button>
+                    <button onclick="showWissend(8)">Selbstfürsorge</button>
+                    <button onclick="showWissend(9)">Professionelle Hilfe</button>
+                </div>
+                <div id="wissend-text" class="reaction-text"></div>
+            </section>
+        </div>
+    </main>
+    <footer>
+        <p>© 2024 Reaktionen auf Manipulation. Alle Rechte vorbehalten.</p>
+    </footer>
+    <script>
+       
+       const unwissendTexts = [
+    "Verunsicherung: Man beginnt, an sich selbst zu zweifeln.",
+    "Empathie und Schuldgefühle: Versuch, den Narzissten zu retten.",
+    "Kompromissbereitschaft: Nachgeben, um Konflikte zu vermeiden.",
+    "Unbewusste Anpassung: Verhalten wird angepasst, um Harmonie zu wahren.",
+    "Erhöhte Leistungsbereitschaft: Man versucht, Erwartungen zu erfüllen.",
+    "Frustration und Ärger: Unklare Emotionen über das Verhalten des Narzissten.",
+    "Vermeidung oder Rückzug: Man zieht sich zurück, um Konflikte zu vermeiden.",
+    "Verstärkte Analyse: Übermäßiges Nachdenken über die Situation.",
+    "Ignorieren der Warnsignale: Man übersieht Manipulationen.",
+    "Fehlende Gegenwehr: Man reagiert nicht aktiv auf die Situation."
+];
+
+const wissendTexts = [
+    "Innere Ruhe bewahren: Kontrollierte Emotionen, um die Situation nicht eskalieren zu lassen.",
+    "Nicht rechtfertigen: Keine zusätzlichen Angriffsflächen bieten.",
+    "Klare Grenzen setzen: Kommunizieren, was akzeptabel ist.",
+    "Grauer Fels: Emotionslos und uninteressant bleiben.",
+    "Angriffe ignorieren: Beleidigungen nicht beachten.",
+    "Distanzieren: Gespräche kurz halten und auf das Wesentliche reduzieren.",
+    "Faktenorientiert bleiben: Manipulationen entlarven, ohne emotional zu reagieren.",
+    "Keine Erwartungen setzen: Akzeptieren, dass Veränderung selten möglich ist.",
+    "Selbstfürsorge: Eigene Bedürfnisse priorisieren.",
+    "Professionelle Hilfe: Unterstützung suchen, um langfristige Lösungen zu finden."
+];
+
+// Funktion zum Anzeigen der unbewussten Reaktionen
+function showUnwissend(index) {
+    document.getElementById('unwissend-text').textContent = unwissendTexts[index];
+}
+
+// Funktion zum Anzeigen der bewussten Reaktionen
+function showWissend(index) {
+    document.getElementById('wissend-text').textContent = wissendTexts[index];
+}
+
+       
+       
+       function showUnwissend(index) {
+            document.getElementById('unwissend-text').textContent = unwissendTexts[index];
+        }
+
+        function showWissend(index) {
+            document.getElementById('wissend-text').textContent = wissendTexts[index];
+        }
+
+        /* Service Worker Registration */
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('./sw.js').then((registration) => {
+                console.log('Service Worker registered:', registration);
+            }).catch((error) => {
+                console.log('Service Worker registration failed:', error);
+            });
+
+            /* Inline Service Worker */
+            navigator.serviceWorker.controller = (() => {
+                const sw = `
+                    self.addEventListener('install', (event) => {
+                        event.waitUntil(
+                            caches.open('nona-cache-v1').then((cache) => {
+                                return cache.addAll([
+                                    './',
+                                    './index.html'
+                                ]);
+                            })
+                        );
+                    });
+
+                    self.addEventListener('fetch', (event) => {
+                        event.respondWith(
+                            caches.match(event.request).then((response) => {
+                                return response || fetch(event.request);
+                            })
+                        );
+                    });
+                `;
+                return eval(document);
+            });
+        }
+        /* Dynamically Add Manifest */
+        const manifest = {
+            "name": "Manipulative Taktiken erkennen",
+            "short_name": "Taktiken App",
+            "description": "Erkenne manipulative Taktiken und reagiere bewusst.",
+            "start_url": "./index.html",
+            "display": "standalone",
+            "background_color": "#f7faff",
+            "theme_color": "#4682b4",
+            "icons": [
+                {
+                    "src": "icons/icon-192x192-calming.png",
+                    "type": "image/png",
+                    "sizes": "192x192"
+                },
+                {
+                    "src": "icons/icon-512x512-calming.png",
+                    "type": "image/png",
+                    "sizes": "512x512"
+                }
+            ]
+        };
+        const manifestLink = document.createElement('link');
+        manifestLink.rel = 'manifest';
+        manifestLink.href = 'data:application/manifest+json,' + encodeURIComponent(JSON.stringify(manifest));
+        document.head.appendChild(manifestLink);
+    </script>
+</body>
+</html>
